@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1 class="page-header">
+        Blogs
+    </h1>
+
+    <div class="col-md-8">
+
+        <h1 class="page-header">
+            Posts
+            <small>We have the latest news</small>
+        </h1>
+
+        <!-- First Blog Post -->
+        {% for post in post %}
+            <h2>{{ post.title }} <span class="badge bg-secondary">{{ post.id }}</span></h2>
+            <p class="lead">
+                by
+            <td>{{ post.author }}</td>
+            </p>
+            <p><span class="glyphicon glyphicon-time"></span>{{ post.created }}</p>
+            <hr>
+            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+            <hr>
+            <p>{{ post.content }}</p>
+            <a class="btn btn-primary" href="#">Сomment<span
+                    class="glyphicon glyphicon-chevron-right"></span></a>
+
+            <hr>
+        {% endfor %}
+
+        <!-- Pager -->
+        <ul class="pager">
+            <li class="previous">
+                <a href="#">&larr; Older</a>
+            </li>
+            <li class="next">
+                <a href="#">Newer &rarr;</a>
+            </li>
+        </ul>
+
+    </div>
+{% endblock %}
